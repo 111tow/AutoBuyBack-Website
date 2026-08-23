@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AutoBuyBack | Cash for Cars Rotorua, Free Pickup & Fast Quotes</title>
+    <title>Cash for Cars Rotorua | Free Car Removal & Fast Quotes | AutoBuyBack</title>
     <meta
       name="description"
-      content="AutoBuyBack offers cash for cars Rotorua, buying unwanted, scrap, damaged and non-running vehicles with free collection and fast cash quotes."
+      content="AutoBuyBack offers cash for cars Rotorua, buying unwanted, scrap, damaged and non-running vehicles with free pickup, responsible recycling and fast cash quotes."
     >
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="AutoBuyBack | We Buy Any Vehicle">
@@ -25,7 +25,7 @@
         "name": "AutoBuyBack",
         "image": "assets/autobuyback-logo.png",
         "telephone": "+6473456111",
-        "description": "AutoBuyBack offers cash for cars Rotorua, buying unwanted, scrap, damaged and non-running vehicles with free collection.",
+        "description": "AutoBuyBack offers cash for cars Rotorua, buying unwanted, scrap, damaged and non-running vehicles with free pickup and responsible recycling.",
         "areaServed": ["Rotorua", "Ngongotaha", "Owhata", "Glenholme", "Fordlands", "Western Heights", "Fenton Park", "Bay of Plenty"],
         "address": {
           "@type": "PostalAddress",
@@ -33,7 +33,7 @@
           "addressRegion": "Bay of Plenty",
           "addressCountry": "NZ"
         },
-        "serviceType": ["Cash for cars", "Car removal", "Scrap car removal", "Unwanted vehicle pickup"]
+        "serviceType": ["Cash for cars", "Vehicle recycling buyback", "Car removal", "Scrap car removal", "Unwanted vehicle pickup"]
       }
     </script>
   </head>
@@ -57,13 +57,23 @@
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow">AutoBuyBack Rotorua</p>
-          <div class="hero-promises" aria-label="AutoBuyBack service promise">
-            <h1>We come to you.</h1>
-            <h1>Pay cash on the spot.</h1>
+          <h1 class="hero-title">Sell your unwanted vehicle in 3 easy steps.</h1>
+          <div class="hero-process-icons" aria-label="How AutoBuyBack works">
+            <article>
+              <img src="assets/icon-step-quote.png" alt="">
+              <h3>Get your quote</h3>
+            </article>
+            <article>
+              <img src="assets/icon-step-collection.png" alt="">
+              <h3>We come to you</h3>
+            </article>
+            <article>
+              <img src="assets/icon-step-cash.png" alt="">
+              <h3>Get paid cash</h3>
+            </article>
           </div>
           <p class="lead">
-            We buy damaged, scrap and non-running vehicles across Rotorua. Send the details first,
-            get a clear cash offer, then choose pickup.
+            Send the details, get a clear cash offer, then choose pickup.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#instant-quote">Start quote</a>
@@ -74,6 +84,9 @@
             <span>Same day where possible</span>
             <span>Cash paid on collection</span>
           </div>
+          <figure class="pickup-preview pickup-preview-desktop" aria-label="AutoBuyBack free car pickup">
+            <img src="assets/rotorua-car-removal-hero.png" alt="Car being collected by tow truck">
+          </figure>
         </div>
 
         <aside class="quote-panel" id="instant-quote" aria-label="AutoBuyBack quote form">
@@ -84,14 +97,20 @@
               <p class="quote-subhead">Start with the rego, then add condition details for a sharper cash offer.</p>
             </div>
           </div>
-          <form action="mailto:quotes@autobuyback.co.nz" method="post" enctype="multipart/form-data">
+          <form id="quote-form" action="https://formspree.io/f/xwlezdgj" method="post">
+            <input type="hidden" name="_subject">
+            <input type="hidden" name="_replyto">
             <label>
               Your name
-              <input name="Name" autocomplete="name" placeholder="Enter your name" required>
+              <input class="title-case-input" name="Name" autocomplete="name" placeholder="Enter your name" required>
             </label>
             <label>
               Phone number
               <input name="Phone" autocomplete="tel" placeholder="Enter your phone number" required>
+            </label>
+            <label>
+              Email address
+              <input type="email" name="email" autocomplete="email" placeholder="Enter your email address" required>
             </label>
             <label>
               Number plate
@@ -108,23 +127,30 @@
               </label>
               <label>
                 Make
-                <input class="vehicle-make" name="Make" placeholder="e.g. Toyota" required>
+                <input class="vehicle-make title-case-input" name="Make" placeholder="e.g. Toyota" required>
               </label>
               <label>
                 Model
-                <input class="vehicle-model" name="Model" placeholder="e.g. Corolla" required>
+                <input class="vehicle-model title-case-input" name="Model" placeholder="e.g. Corolla" required>
               </label>
             </div>
             <label>
               Pickup suburb
-              <input name="Pickup suburb" placeholder="e.g. Ngongotaha">
+              <input class="title-case-input" name="Pickup suburb" placeholder="e.g. Ngongotaha">
             </label>
+            <fieldset class="pickup-time-fieldset">
+              <legend>Pickup timing</legend>
+              <div class="pickup-time-options">
+                <label class="check-option"><input type="radio" name="Pickup timing" value="ASAP" checked> ASAP</label>
+                <label class="check-option"><input type="radio" name="Pickup timing" value="Preferred time/date"> Preferred time/date</label>
+              </div>
+              <label class="preferred-time-label">
+                Preferred pickup time
+                <input name="Preferred pickup time" placeholder="Optional, e.g. today after 3pm">
+              </label>
+            </fieldset>
             <details class="form-extra">
               <summary>Add condition details for a better quote</summary>
-              <label>
-                Body type
-                <input class="vehicle-body" name="Body type" placeholder="e.g. Hatchback">
-              </label>
               <fieldset class="checkbox-fieldset">
                 <legend>Vehicle condition</legend>
                 <div class="checkbox-grid">
@@ -136,14 +162,11 @@
                   <label class="check-option"><input type="checkbox" name="Authority to sell" value="Yes"> Authority to sell</label>
                 </div>
               </fieldset>
-              <label class="upload-box">
-                Photos
-                <input type="file" name="Vehicle photos" accept="image/*" multiple>
-                <small>Photos of damage, sides, wheels and engine bay can help us quote faster.</small>
-              </label>
               <label>
                 Expected price range
-                <input name="Expected price range" placeholder="Optional, e.g. $500 - $1,000">
+                <span class="money-input">
+                  <input class="currency-input" name="Expected price range" inputmode="numeric" placeholder="Optional, e.g. 500 - 1,000">
+                </span>
               </label>
               <label>
                 Condition notes
@@ -152,8 +175,11 @@
             </details>
             <button class="button primary form-button" type="submit">Get my cash quote</button>
           </form>
-          <small class="quote-note">Quote first. Call if easier: <a href="tel:073456111">07 3456 111</a></small>
         </aside>
+      </section>
+
+      <section class="pickup-preview pickup-preview-mobile" aria-label="AutoBuyBack free car pickup">
+        <img src="assets/rotorua-car-removal-hero.png" alt="Car being collected by tow truck">
       </section>
 
       <section class="stats-strip" aria-label="AutoBuyBack summary">
@@ -171,37 +197,16 @@
         </div>
       </section>
 
-      <section class="section visual-split" id="how">
-        <div class="image-frame">
-          <img src="assets/rotorua-car-removal-hero.png" alt="Tow truck collecting a car in Rotorua">
+      <section class="section seo-section" aria-label="Cash for cars Rotorua">
+        <div class="section-heading">
+          <p class="eyebrow">Cash for cars Rotorua</p>
+          <h2>Unwanted car removal with free pickup.</h2>
         </div>
-        <div class="split-copy">
-          <p class="eyebrow">How it works</p>
-          <h2>Simple from quote to pickup.</h2>
-          <div class="steps-list">
-            <article>
-              <span>1</span>
-              <div>
-                <h3>Send the details</h3>
-                <p>Use the form with the rego, make, model and pickup suburb. Add photos if you want a sharper quote.</p>
-              </div>
-            </article>
-            <article>
-              <span>2</span>
-              <div>
-                <h3>Review the cash offer</h3>
-                <p>We price the vehicle based on condition, parts value, demand and pickup access.</p>
-              </div>
-            </article>
-            <article>
-              <span>3</span>
-              <div>
-                <h3>Book free collection</h3>
-                <p>If you accept, we organise pickup and pay when the vehicle is collected.</p>
-              </div>
-            </article>
-          </div>
-        </div>
+        <p>
+          AutoBuyBack buys unwanted cars, scrap cars, damaged vehicles and non-running cars across Rotorua.
+          If you are searching for cash for cars Rotorua, car removal Rotorua, scrap car removal, no WOF car
+          removal or a damaged car buyer, send the vehicle details and we will come back with a clear cash quote.
+        </p>
       </section>
 
       <section class="section vehicle-section" id="vehicles">
@@ -285,7 +290,11 @@
         const make = form.querySelector('.vehicle-make');
         const model = form.querySelector('.vehicle-model');
         const year = form.querySelector('.vehicle-year');
-        const body = form.querySelector('.vehicle-body');
+        const titleCaseInputs = form.querySelectorAll('.title-case-input');
+        const currencyInput = form.querySelector('.currency-input');
+        const subjectField = form.querySelector('input[name="_subject"]');
+        const replyToField = form.querySelector('input[name="_replyto"]');
+        const submitButton = form.querySelector('.form-button');
 
         const setStatus = (message, state = '') => {
           if (!status) return;
@@ -298,6 +307,31 @@
           const plate = plateInput.value.trim().replace(/\s+/g, '').toUpperCase();
           plateInput.value = plate;
           return plate;
+        };
+
+        const toTitleCase = (value) => value
+          .toLowerCase()
+          .replace(/(^|[\s-])([a-z])/g, (match, spacer, letter) => `${spacer}${letter.toUpperCase()}`);
+
+        const formatTitleCaseInput = (input) => {
+          const cursor = input.selectionStart;
+          const formatted = toTitleCase(input.value);
+          input.value = formatted;
+
+          if (document.activeElement === input && cursor !== null) {
+            input.setSelectionRange(cursor, cursor);
+          }
+        };
+
+        const formatCurrencyValue = (value) => {
+          const digits = value.replace(/\D/g, '');
+          if (!digits) return '';
+          return Number(digits).toLocaleString('en-NZ');
+        };
+
+        const getCurrencyValue = () => {
+          if (!currencyInput || !currencyInput.value.trim()) return '';
+          return `$${formatCurrencyValue(currencyInput.value)}`;
         };
 
         const previewLookup = () => {
@@ -315,13 +349,13 @@
             if (make && !make.value) make.placeholder = 'Auto-filled make';
             if (model && !model.value) model.placeholder = 'Auto-filled model';
             if (year && !year.value) year.placeholder = 'Auto-filled year';
-            if (body && !body.value) body.placeholder = 'Auto-filled body type';
           }, 450);
         };
 
         if (plateInput) {
           plateInput.addEventListener('input', () => {
             const plate = plateInput.value.trim().replace(/\s+/g, '').toUpperCase();
+            plateInput.value = plate;
             if (plate.length >= 3) {
               setStatus(`Ready to check ${plate} and fill the vehicle details.`);
             } else {
@@ -330,9 +364,66 @@
           });
         }
 
+        titleCaseInputs.forEach((input) => {
+          input.addEventListener('input', () => formatTitleCaseInput(input));
+          input.addEventListener('blur', () => {
+            input.value = toTitleCase(input.value.trim());
+          });
+        });
+
+        if (currencyInput) {
+          currencyInput.addEventListener('input', () => {
+            currencyInput.value = formatCurrencyValue(currencyInput.value);
+          });
+          currencyInput.addEventListener('blur', () => {
+            currencyInput.value = formatCurrencyValue(currencyInput.value);
+          });
+        }
+
         if (lookupButton) {
           lookupButton.addEventListener('click', previewLookup);
         }
+
+        const prepareQuoteSubmission = () => {
+          if (!form.reportValidity()) return;
+
+          normalisePlate();
+          titleCaseInputs.forEach((input) => {
+            input.value = toTitleCase(input.value.trim());
+          });
+
+          if (currencyInput) {
+            currencyInput.value = formatCurrencyValue(currencyInput.value);
+          }
+
+          const data = new FormData(form);
+          const clean = (name) => String(data.get(name) || '').trim();
+          const plate = normalisePlate();
+          const vehicleLine = [clean('Year'), clean('Make'), clean('Model')]
+            .filter(Boolean)
+            .join(' ');
+
+          const subject = [
+            'AutoBuyBack quote request',
+            plate,
+            vehicleLine
+          ].filter(Boolean).join(' - ');
+
+          if (subjectField) {
+            subjectField.value = subject;
+          }
+
+          if (replyToField) {
+            replyToField.value = clean('email');
+          }
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending quote...';
+          }
+        };
+
+        form.addEventListener('submit', prepareQuoteSubmission);
       });
 
       (() => {

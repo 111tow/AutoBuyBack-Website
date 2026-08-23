@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en-NZ">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AutoBuyBack Animation Samples</title>
+    <style>
+      :root {
+        --ink: #14202a;
+        --muted: #66727d;
+        --paper: #f7fafb;
+        --white: #ffffff;
+        --line: #dce7ec;
+        --accent: #63c83d;
+        --accent-dark: #2f871f;
+        --accent-soft: #edfbe8;
+        --charcoal: #17242e;
+        --shadow: 0 22px 70px rgba(20, 32, 42, 0.12);
+        --soft-shadow: 0 12px 34px rgba(20, 32, 42, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        line-height: 1.5;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 48px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 30px;
+      }
+
+      .logo {
+        width: clamp(250px, 32vw, 430px);
+      }
+
+      .note {
+        max-width: 520px;
+        color: var(--muted);
+        font-weight: 750;
+        text-align: right;
+      }
+
+      .samples {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .concept-sheet {
+        margin-bottom: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--soft-shadow);
+        overflow: hidden;
+      }
+
+      .concept-sheet .sample-head {
+        padding-bottom: 12px;
+      }
+
+      .concept-sheet img {
+        width: 100%;
+        border-top: 1px solid var(--line);
+      }
+
+      .sample {
+        overflow: hidden;
+        min-height: 430px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .sample-head {
+        padding: 18px 20px 0;
+      }
+
+      .sample-label {
+        margin: 0 0 8px;
+        color: var(--accent-dark);
+        font-size: 0.78rem;
+        font-weight: 950;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-size: 1.55rem;
+        line-height: 1.08;
+      }
+
+      .sample-head p:not(.sample-label) {
+        color: var(--muted);
+        font-weight: 720;
+      }
+
+      .stage {
+        position: relative;
+        min-height: 260px;
+        margin: 14px 20px 20px;
+        overflow: hidden;
+        border-radius: 8px;
+        background: linear-gradient(180deg, #ffffff, var(--accent-soft));
+      }
+
+      .step-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 40px;
+        border-radius: 8px;
+        padding: 0 12px;
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: var(--soft-shadow);
+        font-weight: 900;
+      }
+
+      .step-chip span {
+        display: grid;
+        place-items: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        color: white;
+        background: var(--accent);
+      }
+
+      .phone {
+        width: 62px;
+        height: 94px;
+        padding: 16px 9px;
+        border: 6px solid var(--charcoal);
+        border-radius: 16px;
+        background: white;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .phone i {
+        display: block;
+        height: 7px;
+        margin-bottom: 9px;
+        border-radius: 20px;
+        background: var(--accent);
+      }
+
+      .phone i:nth-child(2) {
+        width: 75%;
+        background: #b7e8a6;
+      }
+
+      .phone i:nth-child(3) {
+        width: 55%;
+        background: var(--charcoal);
+      }
+
+      .truck {
+        position: relative;
+        width: 162px;
+        height: 78px;
+      }
+
+      .truck::before,
+      .truck::after {
+        content: "";
+        position: absolute;
+        bottom: 24px;
+        background: var(--accent);
+        box-shadow: inset 0 -8px 0 rgba(20, 32, 42, 0.12);
+      }
+
+      .truck::before {
+        left: 6px;
+        width: 96px;
+        height: 40px;
+        border-radius: 8px 4px 4px 8px;
+      }
+
+      .truck::after {
+        right: 8px;
+        width: 56px;
+        height: 52px;
+        border-radius: 10px 14px 6px 4px;
+      }
+
+      .wheel {
+        position: absolute;
+        bottom: 7px;
+        width: 25px;
+        height: 25px;
+        border: 7px solid var(--charcoal);
+        border-radius: 50%;
+        background: white;
+      }
+
+      .wheel.one {
+        left: 30px;
+      }
+
+      .wheel.two {
+        right: 28px;
+      }
+
+      .cash {
+        position: relative;
+        width: 118px;
+        height: 80px;
+      }
+
+      .cash i {
+        position: absolute;
+        left: 10px;
+        width: 94px;
+        height: 48px;
+        border: 3px solid var(--accent-dark);
+        border-radius: 8px;
+        background: white;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .cash i::after {
+        content: "$";
+        position: absolute;
+        inset: 8px 31px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: var(--accent-dark);
+        background: var(--accent-soft);
+        font-weight: 950;
+      }
+
+      .cash i:nth-child(1) {
+        top: 26px;
+        transform: rotate(-7deg);
+      }
+
+      .cash i:nth-child(2) {
+        top: 16px;
+      }
+
+      .cash i:nth-child(3) {
+        top: 6px;
+        transform: rotate(7deg);
+      }
+
+      .sample-a .stage {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: center;
+        gap: 10px;
+        padding: 22px;
+      }
+
+      .sample-a .mini-step {
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+        text-align: center;
+      }
+
+      .sample-a .mini-step > div:not(.step-chip) {
+        animation: floatStep 3s ease-in-out infinite;
+      }
+
+      .sample-a .mini-step:nth-child(2) > div:not(.step-chip) {
+        animation-delay: 0.2s;
+      }
+
+      .sample-a .mini-step:nth-child(3) > div:not(.step-chip) {
+        animation-delay: 0.4s;
+      }
+
+      .sample-b .stage {
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .flow-line {
+        position: absolute;
+        left: 11%;
+        right: 11%;
+        top: 50%;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(47, 135, 31, 0.15);
+      }
+
+      .flow-line::after {
+        content: "";
+        display: block;
+        width: 32%;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--accent);
+        animation: lineSweep 2.4s ease-in-out infinite;
+      }
+
+      .flow-icons {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        gap: 28px;
+        width: 100%;
+      }
+
+      .flow-icons > div {
+        display: grid;
+        place-items: center;
+        min-height: 128px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .sample-c .stage {
+        min-height: 286px;
+        background:
+          linear-gradient(90deg, rgba(247, 250, 251, 0.96) 0%, rgba(247, 250, 251, 0.78) 34%, rgba(247, 250, 251, 0.12) 68%),
+          url("assets/rotorua-car-removal-hero.png") 62% center / cover;
+      }
+
+      .poster-steps {
+        display: grid;
+        gap: 10px;
+        width: min(320px, 72%);
+        padding: 24px;
+      }
+
+      .poster-steps .step-chip {
+        justify-content: flex-start;
+        animation: slideIn 3.4s ease-in-out infinite;
+      }
+
+      .poster-steps .step-chip:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+
+      .poster-steps .step-chip:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+
+      .sample-d .stage {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 18px;
+      }
+
+      .stack-step {
+        display: grid;
+        grid-template-columns: 64px minmax(0, 1fr);
+        align-items: center;
+        gap: 14px;
+        min-height: 70px;
+        border-radius: 8px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .stack-step strong {
+        display: grid;
+        place-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        color: white;
+        background: var(--charcoal);
+        font-size: 1.2rem;
+        animation: pulseNumber 2.6s ease-in-out infinite;
+      }
+
+      .stack-step:nth-child(2) strong {
+        animation-delay: 0.22s;
+      }
+
+      .stack-step:nth-child(3) strong {
+        animation-delay: 0.44s;
+      }
+
+      .stack-step h3 {
+        margin-bottom: 2px;
+      }
+
+      .stack-step p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 720;
+      }
+
+      @keyframes floatStep {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes lineSweep {
+        0% {
+          transform: translateX(0);
+        }
+
+        50% {
+          transform: translateX(210%);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideIn {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+
+        50% {
+          transform: translateX(16px);
+        }
+      }
+
+      @keyframes pulseNumber {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.08);
+        }
+      }
+
+      @media (max-width: 780px) {
+        header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .note {
+          text-align: left;
+        }
+
+        .samples {
+          grid-template-columns: 1fr;
+        }
+
+        .sample {
+          min-height: 0;
+        }
+
+        .sample-a .stage,
+        .flow-icons {
+          grid-template-columns: 1fr;
+        }
+
+        .flow-line {
+          display: none;
+        }
+
+        .sample-c .stage {
+          background:
+            linear-gradient(180deg, rgba(247, 250, 251, 0.98) 0%, rgba(247, 250, 251, 0.58) 52%, rgba(247, 250, 251, 0.05) 100%),
+            url("assets/rotorua-car-removal-hero.png") 62% center / cover;
+        }
+
+        .poster-steps {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <img class="logo" src="assets/autobuyback-logo.png" alt="AutoBuyBack">
+        <p class="note">A few options for the quote-to-cash animation. These are just samples so we can pick the clearest direction.</p>
+      </header>
+
+      <section class="concept-sheet" aria-label="Generated animation image concepts">
+        <div class="sample-head">
+          <p class="sample-label">Generated concepts</p>
+          <h1>Different image styles for the animation</h1>
+          <p>These are visual directions we can use as a base for the final quote, collection and cash animation.</p>
+        </div>
+        <img src="assets/animation-image-concepts.png" alt="Four generated visual concepts for the AutoBuyBack quote-to-cash animation">
+      </section>
+
+      <section class="samples" aria-label="Animation samples">
+        <article class="sample sample-a">
+          <div class="sample-head">
+            <p class="sample-label">Option A</p>
+            <h2>Three simple cards</h2>
+            <p>Clean and direct. Best if the first screen needs to stay calm.</p>
+          </div>
+          <div class="stage">
+            <div class="mini-step">
+              <div class="phone"><i></i><i></i><i></i></div>
+              <div class="step-chip"><span>1</span> Get quote</div>
+            </div>
+            <div class="mini-step">
+              <div class="truck"><i class="wheel one"></i><i class="wheel two"></i></div>
+              <div class="step-chip"><span>2</span> We collect</div>
+            </div>
+            <div class="mini-step">
+              <div class="cash"><i></i><i></i><i></i></div>
+              <div class="step-chip"><span>3</span> Get paid</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="sample sample-b">
+          <div class="sample-head">
+            <p class="sample-label">Option B</p>
+            <h2>Moving progress line</h2>
+            <p>Shows the process as one quick flow from form to pickup to cash.</p>
+          </div>
+          <div class="stage">
+            <div class="flow-line"></div>
+            <div class="flow-icons">
+              <div><div class="phone"><i></i><i></i><i></i></div></div>
+              <div><div class="truck"><i class="wheel one"></i><i class="wheel two"></i></div></div>
+              <div><div class="cash"><i></i><i></i><i></i></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="sample sample-c">
+          <div class="sample-head">
+            <p class="sample-label">Option C</p>
+            <h2>Photo with step overlay</h2>
+            <p>More visual. Useful if we want the tow-truck photo to do the selling.</p>
+          </div>
+          <div class="stage">
+            <div class="poster-steps">
+              <div class="step-chip"><span>1</span> Get your quote</div>
+              <div class="step-chip"><span>2</span> We come to you</div>
+              <div class="step-chip"><span>3</span> Get paid cash</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="sample sample-d">
+          <div class="sample-head">
+            <p class="sample-label">Option D</p>
+            <h2>Compact stacked steps</h2>
+            <p>Good for mobile because it reads clearly without squeezing icons.</p>
+          </div>
+          <div class="stage">
+            <div class="stack-step">
+              <strong>1</strong>
+              <div>
+                <h3>Get your quote</h3>
+                <p>Send the rego and details.</p>
+              </div>
+            </div>
+            <div class="stack-step">
+              <strong>2</strong>
+              <div>
+                <h3>We come to you</h3>
+                <p>Free collection around Rotorua.</p>
+              </div>
+            </div>
+            <div class="stack-step">
+              <strong>3</strong>
+              <div>
+                <h3>Get paid cash</h3>
+                <p>Paid when the car is collected.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
