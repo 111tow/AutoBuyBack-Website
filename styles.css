@@ -353,7 +353,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   border: 1px solid #c9dce5;
   border-radius: 8px;
@@ -364,7 +365,8 @@ textarea {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   border-color: var(--accent);
   outline: 3px solid rgba(99, 200, 61, 0.18);
 }
@@ -475,22 +477,10 @@ textarea:focus {
   margin-left: 14px;
 }
 
-.checkbox-fieldset {
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.checkbox-fieldset legend {
-  margin-bottom: 8px;
-  font-weight: 900;
-}
-
-.checkbox-grid {
+.condition-fields {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  gap: 12px;
 }
 
 .check-option {
@@ -1202,7 +1192,7 @@ footer strong {
   .rego-check,
   .vehicle-fields,
   .pickup-time-options,
-  .checkbox-grid {
+  .condition-fields {
     grid-template-columns: 1fr;
   }
 

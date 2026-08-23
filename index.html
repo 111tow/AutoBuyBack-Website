@@ -151,17 +151,44 @@
             </fieldset>
             <details class="form-extra">
               <summary>Add condition details for a better quote</summary>
-              <fieldset class="checkbox-fieldset">
-                <legend>Vehicle condition</legend>
-                <div class="checkbox-grid">
-                  <label class="check-option"><input type="checkbox" name="Running" value="Yes"> Starts and runs</label>
-                  <label class="check-option"><input type="checkbox" name="Not running" value="Yes"> Does not run</label>
-                  <label class="check-option"><input type="checkbox" name="Has key" value="Yes"> Has key</label>
-                  <label class="check-option"><input type="checkbox" name="No key" value="Yes"> No key</label>
-                  <label class="check-option"><input type="checkbox" name="Registered owner" value="Yes"> Registered owner</label>
-                  <label class="check-option"><input type="checkbox" name="Authority to sell" value="Yes"> Authority to sell</label>
-                </div>
-              </fieldset>
+              <div class="condition-fields">
+                <label>
+                  Running status
+                  <select name="Running status">
+                    <option value="" selected hidden></option>
+                    <option>Starts and runs</option>
+                    <option>Does not run</option>
+                    <option>Not sure</option>
+                  </select>
+                </label>
+                <label>
+                  Key status
+                  <select name="Key status">
+                    <option value="" selected hidden></option>
+                    <option>Has key</option>
+                    <option>No key</option>
+                    <option>Not sure</option>
+                  </select>
+                </label>
+                <label>
+                  Seller authority
+                  <select name="Seller authority">
+                    <option value="" selected hidden></option>
+                    <option>Registered owner</option>
+                    <option>Authority to sell</option>
+                    <option>Need to confirm</option>
+                  </select>
+                </label>
+                <label>
+                  Finance owing
+                  <select name="Finance owing">
+                    <option value="" selected hidden></option>
+                    <option>No finance owing</option>
+                    <option>Finance owing</option>
+                    <option>Not sure</option>
+                  </select>
+                </label>
+              </div>
               <label>
                 Expected price range
                 <span class="money-input">
